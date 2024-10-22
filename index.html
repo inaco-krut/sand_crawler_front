@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sand Crawler</title>
+  <style>
+    body {
+      font-family: 'Courier New', Courier, monospace, sans-serif; 
+      background-color: black;
+      color: white;
+      margin: 0;
+      padding: 0;
+      min-height: 0vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .header {
+      text-align: center;
+      padding: -20px;
+      position: sticky;
+      top: 0;
+      background-color: black;
+      z-index: 10;
+    }
+    .content {
+      padding: 20px;
+      flex-grow: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      width: 100%;
+    }
+    .container {
+      max-width: 900px;
+      width: 100%;
+      padding: 20px;
+      margin: 0 auto;
+    }
+    #siteList {
+      list-style-type: none;
+      padding: 0;
+      margin-bottom: 500px;
+      position: relative;
+    }
+    #siteList li {
+      margin-bottom: 15px;
+      position: relative;
+    }
+    #siteList li:first-child {
+      margin-bottom: 40px;
+    }
+    #siteList a {
+      text-decoration: none;
+      color: white;
+      cursor: pointer;
+      font-size: 150%;
+      text-transform: uppercase;
+      display: inline-block;
+      position: relative;
+      z-index: 2;
+    }
+    #siteList a:hover {
+      text-decoration: underline;
+    }
+    .dropdown-wrapper {
+      position: relative;
+    }
+    .dropdown-content {
+      height: 0;
+      overflow: hidden;
+      transition: height 0.5s ease-in-out;
+      position: relative;
+    }
+    .dropdown-content.show {
+      height: auto;
+      overflow: visible;
+    }
+    .ad-item {
+      font-family: 'arial', sans-serif, bold; 
+      font-size: var(--site-list-item-font-size, 9px);
+      margin-bottom: 10px;
+    }
+    .ad-item a {
+      color: white;
+      text-decoration: none;
+    }
+    .ad-item a:hover {
+      text-decoration: underline;
+    }
+    .ad-title {
+      font-weight: normal;
+    }
+    .search-container {
+      margin-bottom: 5px;
+      display: none; /* Hide search container by default */
+    }
+    .dropdown-content.show .search-container {
+      display: block; /* Show search container only when dropdown is open */
+    }
+    .search-input {
+      width: 35%;
+      padding: 5px;
+      background-color: transparent;
+      color: rgb(202, 8, 241);
+      border: none;
+      border-bottom: 4px solid white;
+      outline: none;
+    }
+    .global-search-container {
+      text-align: center;
+      margin: 15px 0; /* Updated for consistency */
+      width: 85%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    #globalSearchResults {
+      text-align: left;
+      width: 100%;
+      margin: 0;
+      margin-top: 10px;
+    }
+
+    .ad-item-global {
+      font-family: 'arial', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+      font-size: var(--global-search-font-size, 9px);
+      margin-bottom: 10px;
+    }
+
+  </style>
+</head>
+<body>
+<div class="header">
+  <img src="logo.png" alt="Sand Crawler Logo" style="max-width: 50%; height: auto;">
+</div>
+
+<div class="content">
+  <!-- Move Global Search within centered layout -->
+</div>
+
+<div class="container">
+  <ul id="siteList">
+    <li>
+      <div class="dropdown-wrapper">
+        <a onclick="toggleDropdown('global', '')">GLOBAL SEARCH</a>
+        <div id="globalDropdown" class="dropdown-content sho">
+          <div class="search-container">
+            <input type="text" class="search-input" id="globalSearchInput" placeholder="Search all sites...">
+          </div>
+          <div id="globalResults"></div>
+          <div id="globalSearchResults"></div>
+        </div>
+      </div>
+    </li>
+    <li>
+      <div class="dropdown-wrapper">
+        <a onclick="toggleDropdown('happyride', 'data/scraped_ads_happyride.json')">Happyride</a>
+        <div id="happyrideDropdown" class="dropdown-content">
+          <div class="search-container">
+            <input type="text" class="search-input" id="happyrideSearchInput" placeholder="Search...">
+          </div>
+          <div id="happyrideResults"></div>
+        </div>
+      </div>
+    </li>
+    <li>
+      <div class="dropdown-wrapper">
+        <a onclick="toggleDropdown('dba_bikes', 'data/scraped_ads_dba.cyklar.json')">DBA BIKES</a>
+        <div id="dba_bikesDropdown" class="dropdown-content">
+          <div class="search-container">
+            <input type="text" class="search-input" id="dba_bikesSearchInput" placeholder="Search...">
+          </div>
+          <div id="dba_bikesResults"></div>
+        </div>
+      </div>
+    </li>
+    <li>
+      <div class="dropdown-wrapper">
+        <a onclick="toggleDropdown('dba_parts', 'data/scraped_ads_dba.tillbehoer.json')">DBA PARTS</a>
+        <div id="dba_partsDropdown" class="dropdown-content">
+          <div class="search-container">
+            <input type="text" class="search-input" id="dba_partsSearchInput" placeholder="Search...">
+          </div>
+          <div id="dba_partsResults"></div>
+        </div>
+      </div>
+    </li>
+    <li>
+      <div class="dropdown-wrapper">
+        <a onclick="toggleDropdown('klein_track_search', 'data/scraped_ads_klein.bahnradsoek.json')">KLEIN TRACK SEARCH</a>
+        <div id="klein_track_searchDropdown" class="dropdown-content">
+          <div class="search-container">
+            <input type="text" class="search-input" id="klein_track_searchSearchInput" placeholder="Search...">
+          </div>
+          <div id="klein_track_searchResults"></div>
+        </div>
+      </div>
+    </li>
+    <li>
+      <div class="dropdown-wrapper">
+        <a onclick="toggleDropdown('klein_track', 'data/scraped_ads_klein.fixie_cat.json')">KLEIN TRACK</a>
+        <div id="klein_trackDropdown" class="dropdown-content">
+          <div class="search-container">
+            <input type="text" class="search-input" id="klein_trackSearchInput" placeholder="Search...">
+          </div>
+          <div id="klein_trackResults"></div>
+        </div>
+      </div>
+    </li>
+    <li>
+      <div class="dropdown-wrapper">
+        <a onclick="toggleDropdown('marktplaats', 'data/scraped_ads_marktplaats.json')">MARKTPLAATS</a>
+        <div id="marktplaatsDropdown" class="dropdown-content">
+          <div class="search-container">
+            <input type="text" class="search-input" id="marktplaatsSearchInput" placeholder="Search...">
+          </div>
+          <div id="marktplaatsResults"></div>
+        </div>
+      </div>
+    </li>
+    <li>
+      <div class="dropdown-wrapper">
+        <a onclick="toggleDropdown('finn', 'data/scraped_ads_finn.json')">FINN</a>
+        <div id="finnDropdown" class="dropdown-content">
+          <div class="search-container">
+            <input type="text" class="search-input" id="finnSearchInput" placeholder="Search...">
+          </div>
+          <div id="finnResults"></div>
+        </div>
+      </div>
+    </li>
+  </ul>
+  <div id="fileList"></div>
+  <div id="jsonData"></div>
+</div>
+
+<script>
+  const siteData = {};
+  const siteFiles = [
+    { site: 'happyride', file: 'data/scraped_ads_happyride.json' },
+    { site: 'dba_bikes', file: 'data/scraped_ads_dba.cyklar.json' },
+    { site: 'dba_parts', file: 'data/scraped_ads_dba.tillbehoer.json' },
+    { site: 'klein_track_search', file: 'data/scraped_ads_klein.bahnradsoek.json' },
+    { site: 'klein_track', file: 'data/scraped_ads_klein.fixie_cat.json' },
+    { site: 'marktplaats', file: 'data/scraped_ads_marktplaats.json' },
+    { site: 'finn', file: 'data/scraped_ads_finn.json' }
+  ];
+
+  async function fetchLocalJSON(filePath) {
+    const response = await fetch(filePath);
+    if (!response.ok) {
+        throw new Error(`Failed to fetch ${filePath}: ${response.statusText}`);
+    }
+    const data = await response.json();
+    console.log('Fetched data:', data); // Log the fetched data
+    return data;
+  }
+
+  async function fetchDataFromAPI(filename) {
+    return await fetchLocalJSON(filename);  // Fetch JSON data from relative path
+  }
+
+  async function loadAllData() {
+    for (const { site, file } of siteFiles) {
+      if (!siteData[site]) {
+        siteData[site] = await fetchDataFromAPI(file);
+      }
+    }
+  }
+
+  function displayGlobalSearchAds(ads, containerId) {
+    const container = document.getElementById(containerId);
+    container.innerHTML = ''; // Clear previous results
+
+    if (ads.length === 0) {
+      return; // Exit if there are no ads
+    }
+
+    ads.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+
+    const adsToDisplay = ads;
+
+    adsToDisplay.forEach(ad => {
+      const adElement = document.createElement('div');
+      adElement.className = 'ad-item-global';
+      adElement.innerHTML = `
+        <a href="${ad.link}" target="_blank" class="ad-title">${ad.title}</a>
+      `;
+      container.appendChild(adElement);
+    });
+  }
+
+  function displayRecentAds(ads, containerId) {
+    const container = document.getElementById(containerId);
+    container.innerHTML = ''; // Clear previous results
+
+    // Convert ads object to an array
+    const adsArray = Array.isArray(ads) ? ads : Object.values(ads);
+
+    if (adsArray.length === 0) {
+      return; // Exit if there are no ads
+    }
+
+    adsArray.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+
+    const adsToDisplay = adsArray.slice(0, 10);
+
+    adsToDisplay.forEach(ad => {
+      const adElement = document.createElement('div');
+      adElement.className = 'ad-item';
+      adElement.innerHTML = `
+        <a href="${ad.link}" target="_blank" class="ad-title">${ad.title}</a>
+      `;
+      container.appendChild(adElement);
+    });
+  }
+
+  async function toggleDropdown(site, filename) {
+    document.querySelectorAll('.dropdown-content').forEach(dropdown => {
+      if (dropdown.id !== `${site}Dropdown`) {
+        dropdown.classList.remove('show');
+      }
+    });
+
+    const dropdown = document.getElementById(`${site}Dropdown`);
+    dropdown.classList.toggle('show');
+
+    if (dropdown.classList.contains('show')) {
+      if (site === 'global') {
+        await loadAllData();
+        searchSite('global');
+      } else {
+        if (!siteData[site]) {
+          siteData[site] = await fetchDataFromAPI(filename);
+        }
+        displayRecentAds(siteData[site], `${site}Results`);
+      }
+    }
+  }
+
+  function searchSite(site) {
+    const searchTerm = document.getElementById(`${site}SearchInput`).value.toLowerCase();
+
+    if (site === 'global') {
+      const allResults = [];
+      for (const siteKey in siteData) {
+        if (siteData[siteKey]) {
+          const results = siteData[siteKey].filter(ad =>
+            ad.title.toLowerCase().includes(searchTerm)
+          );
+          allResults.push(...results);
+        }
+      }
+
+      displayGlobalSearchAds(allResults, 'globalResults');
+    } else {
+      const searchResults = siteData[site].filter(ad =>
+        ad.title.toLowerCase().includes(searchTerm)
+      );
+      displayRecentAds(searchResults, `${site}Results`);
+    }
+  }
+
+  document.querySelectorAll('.search-input').forEach(input => {
+    input.addEventListener('input', (event) => {
+      const site = event.target.id.replace('SearchInput', '');
+      searchSite(site);
+    });
+  });
+</script>
+</body>
+</html>
