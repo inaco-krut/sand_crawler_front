@@ -377,6 +377,16 @@
       searchSite(site);
     });
   });
+
+  // Add this code after your existing event listeners for search inputs
+  document.getElementById('globalSearchInput').addEventListener('input', (event) => {
+    const searchTerm = event.target.value.toLowerCase();
+    if (searchTerm === '') {
+      document.getElementById('globalResults').innerHTML = ''; // Clear results if input is empty
+    } else {
+      searchSite('global'); // Perform search if there is a search term
+    }
+  });
 </script>
 </body>
 </html>
