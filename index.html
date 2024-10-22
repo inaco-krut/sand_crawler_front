@@ -345,22 +345,26 @@
     const searchTerm = document.getElementById(`${site}SearchInput`).value.toLowerCase();
 
     if (site === 'global') {
-      const allResults = [];
-      for (const siteKey in siteData) {
-        if (siteData[siteKey]) {
-          const results = siteData[siteKey].filter(ad =>
-            ad.title.toLowerCase().includes(searchTerm)
-          );
-          allResults.push(...results);
+        const allResults = [];
+        for (const siteKey in siteData) {
+            if (siteData[siteKey]) {
+                // Convert siteData[siteKey] to an array
+                const adsArray = Object.values(siteData[siteKey]);
+                const results = adsArray.filter(ad =>
+                    ad.title.toLowerCase().includes(searchTerm)
+                );
+                allResults.push(...results);
+            }
         }
-      }
 
-      displayGlobalSearchAds(allResults, 'globalResults');
+        displayGlobalSearchAds(allResults, 'globalResults');
     } else {
-      const searchResults = siteData[site].filter(ad =>
-        ad.title.toLowerCase().includes(searchTerm)
-      );
-      displayRecentAds(searchResults, `${site}Results`);
+        // Convert siteData[site] to an array
+        const adsArray = Object.values(siteData[site]);
+        const searchResults = adsArray.filter(ad =>
+            ad.title.toLowerCase().includes(searchTerm)
+        );
+        displayRecentAds(searchResults, `${site}Results`);
     }
   }
 
