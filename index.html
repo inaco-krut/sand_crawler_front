@@ -320,24 +320,27 @@
 
   async function toggleDropdown(site, filename) {
     document.querySelectorAll('.dropdown-content').forEach(dropdown => {
-      if (dropdown.id !== `${site}Dropdown`) {
-        dropdown.classList.remove('show');
-      }
+        if (dropdown.id !== `${site}Dropdown`) {
+            dropdown.classList.remove('show');
+        }
     });
 
     const dropdown = document.getElementById(`${site}Dropdown`);
     dropdown.classList.toggle('show');
 
     if (dropdown.classList.contains('show')) {
-      if (site === 'global') {
-        await loadAllData();
-        searchSite('global');
-      } else {
-        if (!siteData[site]) {
-          siteData[site] = await fetchDataFromAPI(filename);
+        if (site === 'global') {
+            await loadAllData();
+            const searchTerm = document.getElementById('globalSearchInput').value.toLowerCase();
+            if (searchTerm) {
+                searchSite('global'); // Only search if there is a search term
+            }
+        } else {
+            if (!siteData[site]) {
+                siteData[site] = await fetchDataFromAPI(filename);
+            }
+            displayRecentAds(siteData[site], `${site}Results`);
         }
-        displayRecentAds(siteData[site], `${site}Results`);
-      }
     }
   }
 
