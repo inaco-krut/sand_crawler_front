@@ -478,5 +478,53 @@
         "link": "https://www.dba.dk/herrecykel-andet-maerke-post/id-1117999158/",
         "match_text": "Combination Match found: '1 gear' + 'cykel'",
         "timestamp": "2024-10-22 19:58:41"
+    },
+    "02c7c3e1fb0a80ed6e9b3e5feede4cd0": {
+        "title": "singlespeed herrecykel herrecykel, andet mrke singlespeed vi...",
+        "link": "https://www.dba.dk/singlespeed-herrecykel/id-510916604/",
+        "match_text": "Main Keyword Match found: 'singlespeed'",
+        "timestamp": "2024-10-23 00:32:24"
+    },
+    "279fe4a935e6e15db28d3e0974d00a92": {
+        "title": "herreracer, andet mrke racerstyr, 8 stk blandede racerstyr. ...",
+        "link": "https://www.dba.dk/herreracer-andet-maerke/id-1118008052/",
+        "match_text": "Main Keyword Match found: 'ITM'",
+        "timestamp": "2024-10-23 09:16:56"
+    },
+    "d2e705e432904573976a1d02f86e1d91": {
+        "title": "herreracer, pinarello selle italia flite, 1999 selle italia ...",
+        "link": "https://www.dba.dk/herreracer-pinarello-selle/id-1118014943/",
+        "match_text": "Main Keyword Match found: 'flite'",
+        "timestamp": "2024-10-23 12:57:27"
+    },
+    "9804eb63072998156135de404d2e07f1": {
+        "title": "andre, gazelle panasonic oplader no.nkj066m, gazelle panason...",
+        "link": "https://www.dba.dk/andre-gazelle-panasonic/id-1118015980/",
+        "match_text": "Main Keyword Match found: 'panasonic'",
+        "timestamp": "2024-10-23 13:28:53"
+    },
+    "cf09c9ce8b86c21a36af60f3aeedd278": {
+        "title": "herrecykel, centurion flxie 1gear, 52 cm stel, 1 gear, en li...",
+        "link": "https://www.dba.dk/herrecykel-centurion-flxie/id-1118016900/",
+        "match_text": "Combination Match found: '1 gear' + 'cykel'",
+        "timestamp": "2024-10-23 14:00:16"
+    },
+    "ef84a56ae3cf1dc1269831d233eed1f6": {
+        "title": "herrecykel, mbk replica, 56 cm stel, 1 gear, vil bare gerne ...",
+        "link": "https://www.dba.dk/herrecykel-mbk-replica-56/id-1118018136/",
+        "match_text": "Combination Match found: '1 gear' + 'cykel'",
+        "timestamp": "2024-10-23 14:31:32"
+    },
+    "932eb86643205b6af99d4185b051ddc0": {
+        "title": "herrecykel, mustang singlespeed, 57 cm stel, 1 gear, hej fol...",
+        "link": "https://www.dba.dk/herrecykel-mustang/id-1118018512/",
+        "match_text": "Combination Match found: 'singlespeed' + 'cykel'",
+        "timestamp": "2024-10-23 14:47:12"
+    },
+    "2b35122048dbe4d97cb0bf09c740b964": {
+        "title": "herreracer, mbk, 61 cm stel, 1 gear, custom-built single-spe...",
+        "link": "https://www.dba.dk/herreracer-mbk-61-cm-stel-1/id-1118020702/",
+        "match_text": "Combination Match found: '1 gear' + 'bikes'",
+        "timestamp": "2024-10-23 15:49:39"
     }
 }
