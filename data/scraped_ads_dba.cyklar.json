@@ -526,5 +526,17 @@
         "link": "https://www.dba.dk/herreracer-mbk-61-cm-stel-1/id-1118020702/",
         "match_text": "Combination Match found: '1 gear' + 'bikes'",
         "timestamp": "2024-10-23 15:49:39"
+    },
+    "566e1e6c34238fc369ce08d0c3c69109": {
+        "title": "herrecykel, andet mrke sommerhus , 1 cm stel, 1 gear, stelnr...",
+        "link": "https://www.dba.dk/herrecykel-andet-maerke/id-1118023014/",
+        "match_text": "Combination Match found: '1 gear' + 'cykel'",
+        "timestamp": "2024-10-23 17:07:36"
+    },
+    "41efe5d1beb7943a6fef9aca3421a202": {
+        "title": "peugeot richard virenque singlespeed herreracer, peugeot ric...",
+        "link": "https://www.dba.dk/peugeot-richard-virenque-si/id-510855857/",
+        "match_text": "Main Keyword Match found: 'singlespeed'",
+        "timestamp": "2024-10-24 03:36:23"
     }
 }
